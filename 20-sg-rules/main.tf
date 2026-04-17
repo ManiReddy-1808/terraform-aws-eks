@@ -56,7 +56,7 @@ resource "aws_security_group_rule" "ingress_alb_public"{
     to_port = 443
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"] # Where traffic is coming from
-    security_group_id = local.frontend_alb_sg_id
+    security_group_id = local.ingress_alb_sg_id
 }
 
 # Openvpn
