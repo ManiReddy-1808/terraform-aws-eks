@@ -37,11 +37,11 @@ module "eks" {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["m5.xlarge"]
-      iam_role_additional_policies = [
-        "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
-        "arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy",
-      ]
-      
+      iam_role_additional_policies = {
+        AmazonEBS = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+        AmazonEFS = "arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy"
+      }
+
       # Cluster Node Auto Scaling configuration
       min_size     = 2
       max_size     = 10
