@@ -13,6 +13,7 @@ module "db" {
   port     = "3306"
   manage_master_user_password = false # we are going to manage the password using AWS Secrets Manager
   password_wo = "RoboShop#123"
+  password_wo_version = 1
 
   vpc_security_group_ids = [local.mysql_sg_id] # Use the security group ID from locals.tf
 
@@ -27,7 +28,8 @@ module "db" {
   major_engine_version = "8.0"
 
   # Database Deletion Protection
-  deletion_protection = false # After practice we are deleting so
+  deletion_protection = false # After practice we are deleting so we are disabling deletion protection. 
+                              #In production, it should be enabled.
 
   parameters = [
     {
