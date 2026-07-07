@@ -118,6 +118,7 @@ resource "aws_security_group_rule" "eks_node_eks_control_plane" {
   security_group_id = local.eks_node_sg_id
 }
 
+# For pod to pod communication
 resource "aws_security_group_rule" "eks_node_vpc_cidr" {
   type              = "ingress"
   from_port         = 0
